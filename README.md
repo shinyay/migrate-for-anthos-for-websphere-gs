@@ -1,6 +1,6 @@
-# Name
+# Migrate for Anthos Getting Started for WebSphere
 
-Overview
+WebSphere Application Server (WAS) traditional is a platform for deploying apps in a Java Enterprise Edition (Java EE) based runtime environment. Migrate for Anthos lets you modernize app workloads running in WAS traditional by converting them to application containers
 
 ## Description
 

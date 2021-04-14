@@ -53,6 +53,12 @@ $ gcloud services enable \
 |container.googleapis.com|Kubernetes Engine API|
 |containerregistry.googleapis.com|Google Container Registry API|
 
+Create Service Account for Artifacts by M4A
+```
+$ gcloud iam service-accounts create m4a-process
+```
+
+
 ### Create Processing Cluster
 Creating Cluster
 ```

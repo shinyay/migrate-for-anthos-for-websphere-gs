@@ -24,6 +24,11 @@ $ java -jar binaryAppScannerInstaller.jar --acceptLicense --verbose
 Target directory for product files? ./tool
 ```
 
+Upload Migration Toolkit
+```
+$ cd tool/wamt/
+$ gsutil mb gs://(gcloud config get-value project)-websphere
+```
 
 ## Installation
 

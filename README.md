@@ -31,6 +31,28 @@ $ gsutil mb gs://(gcloud config get-value project)-websphere
 $ gsutil cp binaryAppScanner.jar gs://(gcloud config get-value project)-websphere
 ```
 
+### Configure Service Account
+
+Enable required services
+```
+$ gcloud services enable \
+  servicemanagement.googleapis.com \
+  servicecontrol.googleapis.com \
+  cloudresourcemanager.googleapis.com \
+  container.googleapis.com \
+  compute.googleapis.com \
+  containerregistry.googleapis.com
+```
+
+|Name|Title|
+|----|-----|
+|servicemanagement.googleapis.com|Service Management API|
+|servicecontrol.googleapis.com|Service Control API|
+|cloudresourcemanager.googleapis.com|Cloud Resource Manager API|
+|compute.googleapis.com	Compute|Engine API|
+|container.googleapis.com|Kubernetes Engine API|
+|containerregistry.googleapis.com|Google Container Registry API|
+
 ### Create Processing Cluster
 Creating Cluster
 ```

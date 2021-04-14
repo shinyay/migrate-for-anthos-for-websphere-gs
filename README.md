@@ -293,6 +293,15 @@ You can find the following files when the process finishes:
 
 ![artifact](https://user-images.githubusercontent.com/3072734/114661793-8b8aff00-9d32-11eb-8576-be0dd57c009f.png)
 
+Download the generated artifact files
+```
+$ migctl migration get-artifacts was-migration
+```
+
+|||
+|||
+|||
+
 ## Installation
 
 ## References

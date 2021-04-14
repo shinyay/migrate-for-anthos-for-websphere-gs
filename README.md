@@ -304,6 +304,126 @@ $ migctl migration get-artifacts was-migration
 |build.sh|It is used to build deployment using `gcloud builds`|
 |deployment_spec.yaml|It is used by `build.sh` or `kubectl apply`|
 
+
+<details><summary>Dockerfile</summary><div>
+<code>
+FROM ibmcom/websphere-traditional:9.0.5.6
+
+ADD --chown=was:root additionalFiles.tar.gz /
+
+COPY --chown=was:root JaxWSServicesSamples.ear_wsadmin.py /work/config/
+
+COPY --chown=was:root JaxWSServicesSamples.ear /work/app/
+
+RUN /work/configure.sh
+</code>
+</div></details>
+
+<details><summary>JaxWSServicesSamples.ear_wsadmin.py</summary><div>
+<code>
+Cell=AdminConfig.getid('/Cell:' + AdminControl.getCell() + '/')
+Node=AdminConfig.getid('/Cell:' + AdminControl.getCell() + '/Node:' + AdminControl.getNode() + '/')
+Server=AdminConfig.getid('/Cell:' + AdminControl.getCell() + '/Node:' + AdminControl.getNode() + '/Server:server1')
+NodeName=AdminControl.getNode()
+
+print 'Starting Creating JVM Properties'
+
+print 'Starting Creating Authentication Alias'
+
+print 'Starting Creating Queues'
+
+print 'Starting Creating Topics'
+
+print 'Starting Creating Activation Specifications'
+
+print 'Starting Creating Connection Factories'
+
+print 'Starting Creating JDBC Providers'
+
+print 'Starting Creating Variables'
+
+print 'Starting Saving Configuration Changes Before Application Deployment'
+AdminConfig.save()
+print 'Starting Application Deployment'
+AdminApp.install('/work/app/JaxWSServicesSamples.ear', ["-node", NodeName, "-server", "server1", "-appname", "JaxWSServicesSamples.ear", "-CtxRootForWebMod", [["SampleClientSei", "SampleClientSei.war,WEB-INF/web.xml", "/wssamplesei"], ["SampleServicesSei", "SampleServicesSei.war,WEB-INF/web.xml", "/WSSampleSei"], ["SampleMTOMClient", "SampleMTOMClient.war,WEB-INF/web.xml", "/wssamplemtom"], ["SampleMTOMService", "SampleMTOMService.war,WEB-INF/web.xml", "/WSSampleMTOM"]]])
+AdminConfig.save()
+</code>
+</div></details>
+
+<details><summary>build.sh</summary><div>
+<code>
+#!/bin/bash
+gsutil -m cp -n gs://PROJECT_ID-migration-artifacts/v2k-system-was-migration/3c70d462-2b91-4288-a370-db7af82da85a/JaxWSServicesSamples.ear/* ./
+gcloud builds submit --timeout 1h -t gcr.io/PROJECT_ID/jax-app-was:v0-0-1-jaxwsservicessamples-ear
+</code>
+</div></details>
+
+<details><summary>deployment_spec.yaml</summary><div>
+<code>
+# Stateless application specification
+# The Deployment creates a single replicated Pod, indicated by the 'replicas' field
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: jax-app-jaxwsservicessamples-ear
+    migrate-for-anthos-optimization: "true"
+    migrate-for-anthos-version: v1.7.0
+  name: jax-app-jaxwsservicessamples-ear
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jax-app-jaxwsservicessamples-ear
+      migrate-for-anthos-optimization: "true"
+      migrate-for-anthos-version: v1.7.0
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: jax-app-jaxwsservicessamples-ear
+        migrate-for-anthos-optimization: "true"
+        migrate-for-anthos-version: v1.7.0
+    spec:
+      containers:
+      - image: gcr.io/shinyay-works-201123-296509/jax-app-was:v0-0-1-jaxwsservicessamples-ear
+        name: jax-app-jaxwsservicessamples-ear
+        resources: {}
+status: {}
+
+---
+# Headless Service specification -
+# No load-balancing, and a single cluster internal IP, only reachable from within the cluster
+# The Kubernetes endpoints controller will modify the DNS configuration to return records (addresses) that point to the Pods, which are labeled with "app": "jax-app-jaxwsservicessamples-ear"
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  name: jax-app-jaxwsservicessamples-ear
+spec:
+  clusterIP: None
+  ports:
+  - name: defaulthttpendpoint-http
+    port: 9080
+    protocol: TCP
+    targetPort: 9080
+  - name: defaulthttpendpoint-https
+    port: 9443
+    protocol: TCP
+    targetPort: 9443
+  selector:
+    app: jax-app-jaxwsservicessamples-ear
+  type: ClusterIP
+status:
+  loadBalancer: {}
+
+---
+</code>
+</div></details>
+
+
 ## Installation
 
 ## References

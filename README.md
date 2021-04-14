@@ -202,7 +202,11 @@ Find `<APP_NAME>.ear_MigrationReport.html` on the following directory:
     - <HASH_ID>/
       - discovery/
 
-![was-report](https://user-images.githubusercontent.com/3072734/114657960-0ac90480-9d2c-11eb-9860-3057827b3cdb.png)
+![report-dir](https://user-images.githubusercontent.com/3072734/114657960-0ac90480-9d2c-11eb-9860-3057827b3cdb.png)
+
+Review the Report HTML
+![was-report](https://user-images.githubusercontent.com/3072734/114659032-cb9bb300-9d2d-11eb-9758-e11cc1781f8f.png)
+
 
 
 ## Installation

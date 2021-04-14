@@ -14,6 +14,9 @@ WebSphere Application Server (WAS) traditional is a platform for deploying apps 
 ## Requirement
 
 ## Usage
+### Prepare WebSphere Application Server Migration Toolkit for Application Binaries
+Download [Migration Toolkit for Application Binaries](https://www.ibm.com/support/pages/migration-toolkit-application-binaries)
+
 
 ## Installation
 

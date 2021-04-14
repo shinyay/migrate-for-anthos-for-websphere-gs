@@ -148,11 +148,22 @@ gcs-<PROJECT_ID>-migration-artifacts (default)   gcs     <PROJECT_ID>-migration-
 ```
 
 ### Add Migration Source
-
+Create Migration Source
 ```
 $ migctl source create ce websphere-source --project (gcloud config get-value project) --json-key m4a-source-sa.json
 ```
 
+Verify Migration Source
+```
+$ kubectl get SourceProvider
+NAME               STATE
+websphere-source   READY
+
+$ migctl source list
+
+$ migctl source status ce-source
+State: READY
+```
 ## Installation
 
 ## References

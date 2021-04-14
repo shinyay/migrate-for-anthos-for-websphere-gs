@@ -192,6 +192,19 @@ NAME            CURRENT-OPERATION       PROGRESS        STEP            STATUS  
 was-migration   GenerateMigrationPlan   [4/4]           Completed       Running 2m20s
 ```
 
+### Review WebSphere Migration Report
+[Open Cloud Stroage Browser](https://console.cloud.google.com/storage/browser?_ga=2.194885034.647664900.1618187125-431614551.1617859607&_gac=1.190165209.1614817503.Cj0KCQiAhP2BBhDdARIsAJEzXlG2TlvmzfehByHzkbrtwrm3QBiyvkBudRTe5AxxdvHgCv3mGgC9bo8aAnZ1EALw_wcB)
+
+Find `<APP_NAME>.ear_MigrationReport.html` on the following directory:
+
+- <PROJECT_ID>-migration-artifacts/
+  - v2k-system-was-migration/
+    - <HASH_ID>/
+      - discovery/
+
+![was-report](https://user-images.githubusercontent.com/3072734/114657960-0ac90480-9d2c-11eb-9860-3057827b3cdb.png)
+
+
 ## Installation
 
 ## References

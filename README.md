@@ -31,6 +31,23 @@ $ gsutil mb gs://(gcloud config get-value project)-websphere
 $ gsutil cp binaryAppScanner.jar gs://(gcloud config get-value project)-websphere
 ```
 
+### Create Processing Cluster
+Creating Cluster
+```
+$ gcloud container clusters create m4a-process \
+    --project (gcloud config get-value project) \
+    --zone=us-central1-c \
+    --num-nodes=1 \
+    --machine-type=n1-standard-2
+```
+
+Retrieve Credential of Processing Cluster
+```
+$ gcloud container clusters get-credentials m4a-process \
+    --zone=us-central1-f \
+    --project (gcloud config get-value project)
+```
+
 ## Installation
 
 ## References

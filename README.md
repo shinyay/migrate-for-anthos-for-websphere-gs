@@ -320,7 +320,8 @@ RUN /work/configure.sh
 </div></details>
 
 <details><summary>JaxWSServicesSamples.ear_wsadmin.py</summary><div>
-<code>
+
+```python
 Cell=AdminConfig.getid('/Cell:' + AdminControl.getCell() + '/')
 Node=AdminConfig.getid('/Cell:' + AdminControl.getCell() + '/Node:' + AdminControl.getNode() + '/')
 Server=AdminConfig.getid('/Cell:' + AdminControl.getCell() + '/Node:' + AdminControl.getNode() + '/Server:server1')
@@ -347,7 +348,8 @@ AdminConfig.save()
 print 'Starting Application Deployment'
 AdminApp.install('/work/app/JaxWSServicesSamples.ear', ["-node", NodeName, "-server", "server1", "-appname", "JaxWSServicesSamples.ear", "-CtxRootForWebMod", [["SampleClientSei", "SampleClientSei.war,WEB-INF/web.xml", "/wssamplesei"], ["SampleServicesSei", "SampleServicesSei.war,WEB-INF/web.xml", "/WSSampleSei"], ["SampleMTOMClient", "SampleMTOMClient.war,WEB-INF/web.xml", "/wssamplemtom"], ["SampleMTOMService", "SampleMTOMService.war,WEB-INF/web.xml", "/WSSampleMTOM"]]])
 AdminConfig.save()
-</code>
+```
+
 </div></details>
 
 <details><summary>build.sh</summary><div>

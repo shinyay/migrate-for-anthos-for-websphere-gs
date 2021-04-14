@@ -445,6 +445,16 @@ spec:
   type: LoadBalancer # <- from ClusterIP
 ```
 
+```
+$ chmod +x ./build.sh
+$ ./build.sh
+```
+
+### Deploy App Container
+```
+# kubectl apply -f deployment_spec.yaml
+```
+
 ## Installation
 
 ## References

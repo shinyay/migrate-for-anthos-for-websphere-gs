@@ -176,7 +176,7 @@ $ gcloud compute instances stop <INSTANCE_NAME> --zone <ZONE>
 Create Migration Plan
 ```
 $ migctl migration create was-migration \
-    --source websphere-source \
+    --source was-source \
     --vm-id my-instance \
     --intent Image \
     --os-type Linux \
@@ -189,7 +189,7 @@ Migration was-migration was created. Run `migctl migration status was-migration`
 $ migctl migration status was-migration
 
 NAME            CURRENT-OPERATION       PROGRESS        STEP            STATUS  AGE
-was-migration   GenerateMigrationPlan   [4/4]           Discovery       Running 1m20s
+was-migration   GenerateMigrationPlan   [4/4]           Completed       Running 2m20s
 ```
 
 ## Installation

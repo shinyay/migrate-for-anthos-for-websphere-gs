@@ -259,11 +259,24 @@ spec:
 - You should name for app uniquely
 
 ### Generate Artifacts
+Generate Artifact with rewied migration plan
 ```
 $ migctl migration generate-artifacts was-migration
 
 Generate Artifacts task started for Migration was-migration. Run `migctl migration status was-migration` to see its status.
 ```
+
+Verify status
+```
+$ migctl migration status was-migration
+
+NAME            CURRENT-OPERATION       PROGRESS        STEP            STATUS          AGE
+was-migration   GenerateArtifacts       [1/1]           ExtractImage    Completed       2h13m51s
+```
+
+You can find the following files when the process finishes:
+
+![artifact](https://user-images.githubusercontent.com/3072734/114661793-8b8aff00-9d32-11eb-8576-be0dd57c009f.png)
 
 ## Installation
 

@@ -92,10 +92,19 @@ $ gcloud container clusters get-credentials m4a-process \
 ```
 
 ### Install Migrate for Anthos
+Install M4A module to Processing Cluster
 ```
 $ migctl setup install --json-key m4a-process-sa.json
 ```
 
+Verify the installation
+```
+$ migctl doctor
+[✓] Deployment
+[✓] Docker Registry
+[✓] Artifacts Repository
+[✗] Source Status
+```
 
 ## Installation
 

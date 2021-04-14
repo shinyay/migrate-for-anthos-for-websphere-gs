@@ -164,6 +164,34 @@ $ migctl source list
 $ migctl source status ce-source
 State: READY
 ```
+
+### Create Migration Plan
+Stop Micgration Source Instance on Compute Engine
+```
+$ gcloud compute instances list
+
+$ gcloud compute instances stop <INSTANCE_NAME> --zone <ZONE>
+```
+
+Create Migration Plan
+```
+$ migctl migration create was-migration \
+    --source websphere-source \
+    --vm-id my-instance \
+    --intent Image \
+    --os-type Linux \
+    --app-type websphere-traditional
+
+Migration was-migration was created. Run `migctl migration status was-migration` to see its status.
+```
+
+```
+$ migctl migration status was-migration
+
+NAME            CURRENT-OPERATION       PROGRESS        STEP            STATUS  AGE
+was-migration   GenerateMigrationPlan   [4/4]           Discovery       Running 1m20s
+```
+
 ## Installation
 
 ## References

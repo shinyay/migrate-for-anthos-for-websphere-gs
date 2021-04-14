@@ -65,12 +65,14 @@ $ gcloud projects add-iam-policy-binding (gcloud config get-value project) \
     --role=roles/storage.admin
 ```
 
+Retrieve Key file of Service Account
+- `m4a-process-sa.json`: Service Account Key File
+
 ```
 $ gcloud iam service-accounts keys create m4a-process-sa.json \
     --iam-account=m4a-process@(gcloud config get-value project).iam.gserviceaccount.com \
     --project (gcloud config get-value project)
 ```
-
 
 ### Create Processing Cluster
 Creating Cluster
@@ -85,10 +87,14 @@ $ gcloud container clusters create m4a-process \
 Retrieve Credential of Processing Cluster
 ```
 $ gcloud container clusters get-credentials m4a-process \
-    --zone=us-central1-f \
+    --zone=us-central1-c \
     --project (gcloud config get-value project)
 ```
 
+### Install Migrate for Anthos
+```
+$ migctl setup install --json-key m4a-process-sa.json
+```
 
 
 ## Installation

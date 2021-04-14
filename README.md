@@ -147,6 +147,12 @@ NAME                                             TYPE    BUCKET
 gcs-<PROJECT_ID>-migration-artifacts (default)   gcs     <PROJECT_ID>-migration-artifacts
 ```
 
+### Add Migration Source
+
+```
+$ migctl source create ce websphere-source --project (gcloud config get-value project) --json-key m4a-source-sa.json
+```
+
 ## Installation
 
 ## References

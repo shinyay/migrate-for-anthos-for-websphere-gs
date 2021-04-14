@@ -76,18 +76,27 @@ $ gcloud iam service-accounts keys create m4a-process-sa.json \
     --project (gcloud config get-value project)
 ```
 
-#### Service Account for Artifacts by M4A
+#### Service Account for Target Source by M4A
 
-Create Service Account for Target Source by M4A
+Create Service Account for Target Source on Compute Engine
 ```
 $ gcloud iam service-accounts create m4a-source
 ```
 
-Bind Service Account to Role
+Bind Service Account to the following Roles
+- `roles/compute.viewer`
+- `roles/compute.storageAdmin`
+
 ```
 $ gcloud projects add-iam-policy-binding (gcloud config get-value project) \
-    --member=serviceAccount:m4a-process@(gcloud config get-value project).iam.gserviceaccount.com \
-    --role=roles/storage.admin
+    --member=serviceAccount:m4a-source@(gcloud config get-value project).iam.gserviceaccount.com \
+    --role=roles/compute.viewer
+```
+```
+$ gcloud projects add-iam-policy-binding (gcloud config get-value project) \
+    --member=serviceAccount:m4a-source@(gcloud config get-value project).iam.gserviceaccount.com \
+    --role=roles/compute.storageAdmin
+
 ```
 
 Retrieve Key file of Service Account

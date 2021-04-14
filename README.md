@@ -36,12 +36,12 @@ $ gsutil cp binaryAppScanner.jar gs://(gcloud config get-value project)-webspher
 Enable required services
 ```
 $ gcloud services enable \
-  servicemanagement.googleapis.com \
-  servicecontrol.googleapis.com \
-  cloudresourcemanager.googleapis.com \
-  container.googleapis.com \
-  compute.googleapis.com \
-  containerregistry.googleapis.com
+    servicemanagement.googleapis.com \
+    servicecontrol.googleapis.com \
+    cloudresourcemanager.googleapis.com \
+    container.googleapis.com \
+    compute.googleapis.com \
+    containerregistry.googleapis.com
 ```
 
 |Name|Title|
@@ -58,6 +58,12 @@ Create Service Account for Artifacts by M4A
 $ gcloud iam service-accounts create m4a-process
 ```
 
+Bind Service Account to Role
+```
+$ gcloud projects add-iam-policy-binding (gcloud config get-value project) \
+    --member=serviceAccount:m4a-process@(gcloud config get-value project).iam.gserviceaccount.com \
+    --role=roles/storage.admin
+```
 
 ### Create Processing Cluster
 Creating Cluster

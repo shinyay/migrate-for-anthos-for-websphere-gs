@@ -306,7 +306,8 @@ $ migctl migration get-artifacts was-migration
 
 
 <details><summary>Dockerfile</summary><div>
-<code>
+
+```dockerfile
 FROM ibmcom/websphere-traditional:9.0.5.6
 
 ADD --chown=was:root additionalFiles.tar.gz /
@@ -316,7 +317,8 @@ COPY --chown=was:root JaxWSServicesSamples.ear_wsadmin.py /work/config/
 COPY --chown=was:root JaxWSServicesSamples.ear /work/app/
 
 RUN /work/configure.sh
-</code>
+```
+
 </div></details>
 
 <details><summary>JaxWSServicesSamples.ear_wsadmin.py</summary><div>
@@ -353,15 +355,18 @@ AdminConfig.save()
 </div></details>
 
 <details><summary>build.sh</summary><div>
-<code>
+
+```bash
 #!/bin/bash
 gsutil -m cp -n gs://PROJECT_ID-migration-artifacts/v2k-system-was-migration/3c70d462-2b91-4288-a370-db7af82da85a/JaxWSServicesSamples.ear/* ./
 gcloud builds submit --timeout 1h -t gcr.io/PROJECT_ID/jax-app-was:v0-0-1-jaxwsservicessamples-ear
-</code>
+```
+
 </div></details>
 
 <details><summary>deployment_spec.yaml</summary><div>
-<code>
+
+```yaml
 # Stateless application specification
 # The Deployment creates a single replicated Pod, indicated by the 'replicas' field
 apiVersion: apps/v1
@@ -422,7 +427,8 @@ status:
   loadBalancer: {}
 
 ---
-</code>
+```
+
 </div></details>
 
 

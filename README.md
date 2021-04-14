@@ -298,9 +298,11 @@ Download the generated artifact files
 $ migctl migration get-artifacts was-migration
 ```
 
-|||
-|||
-|||
+|File|Description|
+|----|-----------|
+|Dockerfile|It is used to build the image for the migrated app|
+|build.sh|It is used to build deployment using `gcloud builds`|
+|deployment_spec.yaml|It is used by `build.sh` or `kubectl apply`|
 
 ## Installation
 

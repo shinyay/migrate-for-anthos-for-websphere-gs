@@ -431,6 +431,19 @@ status:
 
 </div></details>
 
+### Build Container Image
+Change service type `LoadBalancer` from `ClusterIP` on `deployment_spec.yaml`
+
+```yaml
+apiVersion: v1 
+kind: Service 
+:
+:
+spec: 
+  :
+  : 
+  type: LoadBalancer # <- from ClusterIP
+```
 
 ## Installation
 

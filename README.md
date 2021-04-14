@@ -149,6 +149,8 @@ gcs-<PROJECT_ID>-migration-artifacts (default)   gcs     <PROJECT_ID>-migration-
 
 ### Add Migration Source
 Create Migration Source
+- Migration Source: `websphere-source`
+
 ```
 $ migctl source create ce websphere-source --project (gcloud config get-value project) --json-key m4a-source-sa.json
 ```
@@ -174,9 +176,11 @@ $ gcloud compute instances stop <INSTANCE_NAME> --zone <ZONE>
 ```
 
 Create Migration Plan
+- Migration Plan: `was-migration`
+
 ```
 $ migctl migration create was-migration \
-    --source was-source \
+    --source websphere-source \
     --vm-id my-instance \
     --intent Image \
     --os-type Linux \
@@ -208,7 +212,7 @@ Review the Report HTML
 ![was-report](https://user-images.githubusercontent.com/3072734/114659032-cb9bb300-9d2d-11eb-9758-e11cc1781f8f.png)
 
 Retrieve Migration Plan
-- `was-migration.yaml`
+- Migration Plan: `was-migration.yaml`
 
 ```
 $ migctl migration get was-migration
@@ -257,6 +261,17 @@ spec:
 
 - You should delete all but one path definition
 - You should name for app uniquely
+```yaml
+  image:
+    name: jax-app-was:v0.0.1
+  deployment:
+    appName: jax-app
+```
+
+Update Migration Plan
+```
+$ migctl migration update was-migration --file was-migration.yaml
+```
 
 ### Generate Artifacts
 Generate Artifact with rewied migration plan

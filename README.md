@@ -28,6 +28,7 @@ Upload Migration Toolkit
 ```
 $ cd tool/wamt/
 $ gsutil mb gs://(gcloud config get-value project)-websphere
+$ gsutil cp binaryAppScanner.jar gs://(gcloud config get-value project)-websphere
 ```
 
 ## Installation

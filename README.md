@@ -207,7 +207,63 @@ Find `<APP_NAME>.ear_MigrationReport.html` on the following directory:
 Review the Report HTML
 ![was-report](https://user-images.githubusercontent.com/3072734/114659032-cb9bb300-9d2d-11eb-9758-e11cc1781f8f.png)
 
+Retrieve Migration Plan
+- `was-migration.yaml`
 
+```
+$ migctl migration get was-migration
+```
+
+### Customize the Migration Plan
+You can find multiple apps on the plan:
+
+```yaml
+apiVersion: anthos-migrate.cloud.google.com/v1beta2
+kind: WebSphereGenerateArtifactsFlow
+  :
+  :
+spec:
+  appBinariesMigrationToolkit:
+    applications:
+    - httpEndpoints:
+      :
+      :
+      my-instanceNode01Cell/applications/JaxWSServicesSamples.ear
+    - httpEndpoints:
+      :
+      :
+      my-instanceNode01Cell/applications/DefaultApplication.ear
+      :
+    - httpEndpoints:
+      :
+      :
+      my-instanceNode01Cell/applications/query.ear
+    - httpEndpoints:
+      :
+      :
+      my-instanceNode01Cell/applications/ivtApp.ear
+    detectSharedLibraries: true
+    gcsPath: binaryAppScanner.jar
+    includePackages: ch.qos,com.fasterxml,com.ibm,com.informix,com.lowagie,com.mchange,com.meterware,com.microsoft,com.sun,com.sybase,freemarker,groovy,java,javax,net,oracle,org,sqlj,sun,twitter4j,_ibmjsp
+    includeSensitiveData: true
+    sourceAppServer: was90
+  image:
+    name: my-instance
+  deployment:
+    appName: my-instance
+    folder: v2k-system-was-migration/94b13602-8f1f-416f-86c4-d69f6a3c396a/
+  configs: {}
+```
+
+- You should delete all but one path definition
+- You should name for app uniquely
+
+### Generate Artifacts
+```
+$ migctl migration generate-artifacts was-migration
+
+Generate Artifacts task started for Migration was-migration. Run `migctl migration status was-migration` to see its status.
+```
 
 ## Installation
 

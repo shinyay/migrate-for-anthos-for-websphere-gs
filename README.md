@@ -65,6 +65,13 @@ $ gcloud projects add-iam-policy-binding (gcloud config get-value project) \
     --role=roles/storage.admin
 ```
 
+```
+$ gcloud iam service-accounts keys create m4a-process-sa.json \
+    --iam-account=m4a-process@(gcloud config get-value project).iam.gserviceaccount.com \
+    --project (gcloud config get-value project)
+```
+
+
 ### Create Processing Cluster
 Creating Cluster
 ```
@@ -81,6 +88,8 @@ $ gcloud container clusters get-credentials m4a-process \
     --zone=us-central1-f \
     --project (gcloud config get-value project)
 ```
+
+
 
 ## Installation
 

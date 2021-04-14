@@ -106,6 +106,14 @@ $ migctl doctor
 [✗] Source Status
 ```
 
+List the repository for Artifacts by M4A
+```
+$ migctl artifacts-repo list
+
+NAME                                             TYPE    BUCKET
+gcs-<PROJECT_ID>-migration-artifacts (default)   gcs     <PROJECT_ID>-migration-artifacts
+```
+
 ## Installation
 
 ## References

@@ -450,6 +450,8 @@ $ chmod +x ./build.sh
 $ ./build.sh
 ```
 
+![generated-image](images/m4a-container.gif)
+
 ### Deploy App Container
 ```
 # kubectl apply -f deployment_spec.yaml

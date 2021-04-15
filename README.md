@@ -445,6 +445,7 @@ spec:
   type: LoadBalancer # <- from ClusterIP
 ```
 
+Run the image at local
 ```
 $ chmod +x ./build.sh
 $ ./build.sh

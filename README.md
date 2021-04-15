@@ -445,13 +445,17 @@ spec:
   type: LoadBalancer # <- from ClusterIP
 ```
 
-Run the image at local
 ```
 $ chmod +x ./build.sh
 $ ./build.sh
 ```
+
+
+- Layered Image
 ![dive-in-container](https://user-images.githubusercontent.com/3072734/114809056-6951b980-9de4-11eb-9d45-c3be5e3daedb.png)
 
+
+- Running Image
 ![generated-image](images/m4a-container.gif)
 
 ### Deploy App Container
